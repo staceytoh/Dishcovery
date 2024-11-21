@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #646cff;
+  --color-secondary: #535bf2;
+  --color-dark: #242424;
+  --color-light: #f9f9f9;
+
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  @apply bg-dark text-white flex items-center justify-center min-w-[320px] min-h-screen;
+}
+
+a {
+  @apply font-medium text-primary no-underline;
+}
+a:hover {
+  @apply text-secondary;
+}
+
+h1 {
+  @apply text-4xl font-bold leading-tight;
+}
+
+button {
+  @apply rounded-lg border border-transparent px-4 py-2 text-base font-medium bg-dark cursor-pointer transition-colors;
+}
+button:hover {
+  @apply border-primary;
+}
+button:focus,
+button:focus-visible {
+  @apply outline outline-4 outline-offset-2;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: var(--color-light);
+  }
+  a:hover {
+    color: var(--color-secondary);
+  }
+  button {
+    @apply bg-light;
+  }
+}
