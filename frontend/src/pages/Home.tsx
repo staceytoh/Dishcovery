@@ -2,7 +2,7 @@ const Home = () => {
     return (
       <div className="p-4">
         <h1 className="text-4xl font-bold mb-4">Welcome to Dishcovery</h1>
-        <p className="text-lg mb-4">Search for your favorite recipes!</p>
+        <p className="text-lg mb-4">Search for delicious recipes, discover cuisines from different countries, or let us surprise you with a random dish!</p>
         <input
           type="text"
           placeholder="Search meals..."
