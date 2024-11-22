@@ -37,6 +37,17 @@ app.get('/api/search', async (req, res) => {
   }
 });
 
+// search for specific food item
+app.get('/api/meal/:id', async (req, res) => {
+    const mealId = req.params.id;
+    try {
+      const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`);
+      res.json(response.data.meals[0]);
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to fetch meal details' });
+    }
+  });
+  
 const PORT = 5001; // Use port 5001
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);

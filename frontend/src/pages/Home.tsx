@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const Home = () => {
@@ -16,7 +17,7 @@ const Home = () => {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Search for delicious recipes, discover cuisines from different countries, or let us surprise you with a random dish</h1>
+      <h1 className="text-2xl font-bold mb-4">Search for delicious recipes, discover cuisines from different countries, or let us surrise you with a random dish!</h1>
       <h3>Hungry? Give me an ingredient and I'll cook up a recipe for you!</h3>
       <input
         type="text"
@@ -29,8 +30,9 @@ const Home = () => {
       <div className="mt-4">
         {meals.map((meal) => (
           <div key={meal.idMeal} className="border p-2 mb-2">
-            <h3>{meal.strMeal}</h3>
-            <img src={meal.strMealThumb} alt={meal.strMeal} className="w-32 h-32" />
+            <h3 className="font-bold">{meal.strMeal}</h3>
+            <img src={meal.strMealThumb} alt={meal.strMeal} className="w-32 h-32 mb-2" />
+            <Link to={`/meal/${meal.idMeal}`} className="text-blue-500 underline">View Details</Link>
           </div>
         ))}
       </div>
