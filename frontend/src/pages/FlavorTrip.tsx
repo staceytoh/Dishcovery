@@ -1,6 +1,38 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+// Map of cuisines to country codes
+const areaToCountryCode = {
+  American: 'us',
+  British: 'gb',
+  Canadian: 'ca',
+  Chinese: 'cn',
+  Croatian: 'hr',
+  Dutch: 'nl',
+  Egyptian: 'eg',
+  French: 'fr',
+  Greek: 'gr',
+  Indian: 'in',
+  Irish: 'ie',
+  Italian: 'it',
+  Jamaican: 'jm',
+  Japanese: 'jp',
+  Kenyan: 'ke',
+  Malaysian: 'my',
+  Mexican: 'mx',
+  Moroccan: 'ma',
+  Polish: 'pl',
+  Portuguese: 'pt',
+  Russian: 'ru',
+  Spanish: 'es',
+  Thai: 'th',
+  Tunisian: 'tn',
+  Turkish: 'tr',
+  Vietnamese: 'vn',
+  Ukrainian: 'ua',
+  Filipino: 'ph',
+};
+
 const FlavorTrip = () => {
   const [cuisines, setCuisines] = useState([]); // List of cuisines (flags)
   const [selectedArea, setSelectedArea] = useState(null); // Selected area (flag clicked)
@@ -12,7 +44,9 @@ const FlavorTrip = () => {
     const fetchCuisines = async () => {
       try {
         const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/cuisines`);
-        setCuisines(response.data);
+        // Filter cuisines with valid country codes
+        const filteredCuisines = response.data.filter((cuisine) => areaToCountryCode[cuisine.strArea]);
+        setCuisines(filteredCuisines);
       } catch (error) {
         console.error('Error fetching cuisines:', error);
       }
@@ -51,20 +85,23 @@ const FlavorTrip = () => {
       {/* Show flags if no area is selected */}
       {!selectedArea && (
         <div className="flex flex-wrap gap-4">
-          {cuisines.map((cuisine) => (
-            <button
-              key={cuisine.strArea}
-              onClick={() => fetchMealsByArea(cuisine.strArea)}
-              className="flex flex-col items-center"
-            >
-              <img
-                src={`https://flagcdn.com/w320/${cuisine.strArea.toLowerCase().slice(0, 2)}.png`}
-                alt={`${cuisine.strArea} flag`}
-                className="w-16 h-16 rounded-full"
-              />
-              <span className="mt-2 text-sm font-semibold">{cuisine.strArea}</span>
-            </button>
-          ))}
+          {cuisines.map((cuisine) => {
+            const countryCode = areaToCountryCode[cuisine.strArea];
+            return (
+              <button
+                key={cuisine.strArea}
+                onClick={() => fetchMealsByArea(cuisine.strArea)}
+                className="flex flex-col items-center"
+              >
+                <img
+                  src={`https://flagcdn.com/w320/${countryCode}.png`}
+                  alt={`${cuisine.strArea} flag`}
+                  className="w-16 h-16 rounded-full"
+                />
+                <span className="mt-2 text-sm font-semibold">{cuisine.strArea}</span>
+              </button>
+            );
+          })}
         </div>
       )}
 
