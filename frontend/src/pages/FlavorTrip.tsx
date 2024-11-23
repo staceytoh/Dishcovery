@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import './FlavorTrip.css';
 
 // Map of cuisines to country codes
 const areaToCountryCode = {
