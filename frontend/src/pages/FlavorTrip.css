@@ -100,41 +100,42 @@
 .meal-card {
   background-color: #f4e3ff; /* Light purple background */
   border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   padding: 10px;
   width: 100%;
   max-width: 250px;
   text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation */
+  cursor: pointer;
 }
 
+/* Hover effect on the meal card */
+.meal-card:hover {
+  transform: translateY(-10px); /* Slightly lift the card */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+}
+
+/* Meal image inside the card */
 .meal-card img {
   width: 100%;
   height: 150px;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 10px;
+  transition: transform 0.3s ease; /* Smooth zoom effect for the image */
 }
 
+/* Image zoom effect on hover */
+.meal-card:hover img {
+  transform: scale(1.05); /* Slightly zoom the image */
+}
+
+/* Meal title */
 .meal-title {
   font-size: 1.2rem;
   font-weight: bold;
   color: #333;
   margin-bottom: 10px;
-}
-
-.details-button {
-  background-color: #646cff;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.details-button:hover {
-  background-color: #535bf2;
 }
 
 /* Meal Details Styling */

@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './FlavorTrip.css';
 
-// Map of cuisines to country codes
 const areaToCountryCode = {
   American: 'us',
   British: 'gb',
@@ -114,15 +113,13 @@ const FlavorTrip = () => {
           </button>
           <div className="meals-grid">
             {meals.map((meal: any) => (
-              <div key={meal.idMeal} className="meal-card">
+              <div
+                key={meal.idMeal}
+                className="meal-card"
+                onClick={() => fetchMealDetails(meal.idMeal)} // Make the card clickable
+              >
                 <h3 className="meal-title">{meal.strMeal}</h3>
                 <img src={meal.strMealThumb} alt={meal.strMeal} className="meal-image" />
-                <button
-                  onClick={() => fetchMealDetails(meal.idMeal)}
-                  className="details-button"
-                >
-                  View Details
-                </button>
               </div>
             ))}
           </div>
