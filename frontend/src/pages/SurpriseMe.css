@@ -1,112 +1,113 @@
 /* Main container styling */
 .surprise-me-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background-color: #f9f9f9;
-    padding: 20px;
-  }
-  
-  /* Title styling */
-  .surprise-me-title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-  
-  .surprise-me-subtitle {
-    font-size: 1.5rem;
-    color: #666;
-    margin-bottom: 30px;
-    text-align: center;
-  }
-  
-  /* Meal card styling */
-  .meal-card {
-    background-color: #f4e3ff; 
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    max-width: 1000px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  
-  /* Top section for image and ingredients */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+
+/* Title styling */
+.surprise-me-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.surprise-me-subtitle {
+  font-size: 1.5rem;
+  color: #666;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Meal card styling */
+.meal-box {
+  background-color: #f4e3ff; /* Light purple background */
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Top section for image and ingredients */
 .meal-top {
-    display: flex;
-    gap: 20px;
-    justify-content: flex-start; 
-    align-items: flex-start;
-  }
-  
-  /* Meal Image */
-  .meal-card img {
+  display: flex;
+  flex-direction: row; /* Ensures side-by-side layout */
+  gap: 20px;
+  justify-content: flex-start; 
+  align-items: flex-start;
+}
+
+/* Meal Image */
+.meal-box img {
     width: 300px;
     height: 300px;
     border-radius: 8px;
     object-fit: cover;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
-  /* Ingredients list */
-  .ingredients {
-    flex: 1; 
-    text-align: left; 
-  }  
-  
-  .ingredients h4 {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 8px;
-  }
-  
-  .ingredients-list {
-    text-align: left;
-    margin: 0;
-    padding: 0;
-    list-style-type: disc;
-    padding-left: 20px;
-    color: #333;
-    font-size: 1.1rem;
-    line-height: 1.6;
-  }
-  
-  /* Instructions */
-  .instructions {
-    font-size: 1.1rem;
-    color: #333;
-    text-align: left;
-    line-height: 1.8;
-    margin-top: 20px;
-  }
-  
-  /* Button styling */
-  .surprise-me-button {
-    background-color: #646cff;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .surprise-me-button:hover {
-    background-color: #535bf2;
-  }
-  
-  .surprise-me-description {
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-  
+
+/* Ingredients section */
+.ingredients {
+  flex: 1; /* Allow ingredients to take up remaining space */
+  text-align: left; 
+}  
+
+.ingredients h4 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.ingredients-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: disc;
+  padding-left: 20px;
+  color: #333;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Instructions section */
+.instructions {
+  font-size: 1.1rem;
+  color: #333;
+  text-align: left;
+  line-height: 1.8;
+  margin-top: 20px;
+}
+
+/* Button styling */
+.surprise-me-description {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.surprise-me-button {
+  background-color: #646cff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.surprise-me-button:hover {
+  background-color: #535bf2;
+}

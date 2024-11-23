@@ -28,7 +28,7 @@ const SurpriseMe = () => {
 
       {/* Meal Card */}
       {meal && (
-        <div className="meal-card">
+        <div className="meal-box">
           {/* Top Section: Image and Ingredients */}
           <div className="meal-top">
             <img src={meal.strMealThumb} alt={meal.strMeal} />
