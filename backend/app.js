@@ -47,6 +47,27 @@ app.get('/api/meal/:id', async (req, res) => {
       res.status(500).json({ error: 'Failed to fetch meal details' });
     }
   });
+
+  // get cuisines 
+  app.get('/api/cuisines', async (req, res) => {
+    try {
+      const response = await axios.get('https://www.themealdb.com/api/json/v1/1/list.php?a=list');
+      res.json(response.data.meals);
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to fetch cuisines' });
+    }
+  });
+
+  // get meals by area
+  app.get('/api/meals/:area', async (req, res) => {
+    const area = req.params.area;
+    try {
+      const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`);
+      res.json(response.data.meals);
+    } catch (error) {
+      res.status(500).json({ error: `Failed to fetch meals for area: ${area}` });
+    }
+  });
   
 const PORT = 5001; // Use port 5001
 app.listen(PORT, () => {
