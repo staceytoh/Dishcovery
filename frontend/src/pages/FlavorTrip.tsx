@@ -36,17 +36,16 @@ const areaToCountryCode = {
 
 const FlavorTrip = () => {
   const [cuisines, setCuisines] = useState([]); // List of cuisines (flags)
-  const [selectedArea, setSelectedArea] = useState(null); // Selected area (flag clicked)
+  const [selectedArea, setSelectedArea] = useState<string | null>(null); // Selected area (flag clicked)
   const [meals, setMeals] = useState([]); // Meals from the selected area
-  const [selectedMeal, setSelectedMeal] = useState(null); // Selected meal details
+  const [selectedMeal, setSelectedMeal] = useState<any>(null); // Selected meal details
 
   // Fetch cuisines (flags) on component mount
   useEffect(() => {
     const fetchCuisines = async () => {
       try {
         const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/cuisines`);
-        // Filter cuisines with valid country codes
-        const filteredCuisines = response.data.filter((cuisine) => areaToCountryCode[cuisine.strArea]);
+        const filteredCuisines = response.data.filter((cuisine: any) => areaToCountryCode[cuisine.strArea]);
         setCuisines(filteredCuisines);
       } catch (error) {
         console.error('Error fetching cuisines:', error);
@@ -57,7 +56,7 @@ const FlavorTrip = () => {
   }, []);
 
   // Fetch meals for a selected area
-  const fetchMealsByArea = async (area) => {
+  const fetchMealsByArea = async (area: string) => {
     try {
       const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/meals/${area}`);
       setMeals(response.data);
@@ -69,7 +68,7 @@ const FlavorTrip = () => {
   };
 
   // Fetch meal details
-  const fetchMealDetails = async (id) => {
+  const fetchMealDetails = async (id: string) => {
     try {
       const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/meal/${id}`);
       setSelectedMeal(response.data);
@@ -79,27 +78,27 @@ const FlavorTrip = () => {
   };
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Flavor Trip</h1>
-      <p className="mb-4">Click on a flag to explore recipes from that cuisine!</p>
+    <div className="flavor-trip-container">
+      <h1 className="flavor-trip-title">Discover Flavors from Around the World!</h1>
+      <p className="flavor-trip-subtitle">Press on a flag to explore delicious recipes from that country!</p>
 
       {/* Show flags if no area is selected */}
       {!selectedArea && (
-        <div className="flex flex-wrap gap-4">
-          {cuisines.map((cuisine) => {
+        <div className="flags-container">
+          {cuisines.map((cuisine: any) => {
             const countryCode = areaToCountryCode[cuisine.strArea];
             return (
               <button
                 key={cuisine.strArea}
                 onClick={() => fetchMealsByArea(cuisine.strArea)}
-                className="flex flex-col items-center"
+                className="flag-button"
               >
                 <img
                   src={`https://flagcdn.com/w320/${countryCode}.png`}
                   alt={`${cuisine.strArea} flag`}
-                  className="w-16 h-16 rounded-full"
+                  className="flag-image"
                 />
-                <span className="mt-2 text-sm font-semibold">{cuisine.strArea}</span>
+                <span className="flag-label">{cuisine.strArea}</span>
               </button>
             );
           })}
@@ -108,22 +107,19 @@ const FlavorTrip = () => {
 
       {/* Show meals if an area is selected and no meal is selected */}
       {selectedArea && !selectedMeal && (
-        <div>
-          <h2 className="text-xl font-bold mb-4">Meals from {selectedArea}</h2>
-          <button
-            onClick={() => setSelectedArea(null)}
-            className="bg-red-500 text-white px-4 py-2 rounded mb-4"
-          >
+        <div className="meals-container">
+          <h2 className="selected-area-title">Meals from {selectedArea}</h2>
+          <button onClick={() => setSelectedArea(null)} className="back-button">
             Back to Flags
           </button>
-          <div className="grid grid-cols-2 gap-4">
-            {meals.map((meal) => (
-              <div key={meal.idMeal} className="border p-4 rounded shadow">
-                <h3 className="text-lg font-semibold mb-2">{meal.strMeal}</h3>
-                <img src={meal.strMealThumb} alt={meal.strMeal} className="w-full h-32 object-cover mb-2" />
+          <div className="meals-grid">
+            {meals.map((meal: any) => (
+              <div key={meal.idMeal} className="meal-card">
+                <h3 className="meal-title">{meal.strMeal}</h3>
+                <img src={meal.strMealThumb} alt={meal.strMeal} className="meal-image" />
                 <button
                   onClick={() => fetchMealDetails(meal.idMeal)}
-                  className="bg-blue-500 text-white px-4 py-2 rounded text-sm"
+                  className="details-button"
                 >
                   View Details
                 </button>
@@ -135,27 +131,39 @@ const FlavorTrip = () => {
 
       {/* Show meal details if a meal is selected */}
       {selectedMeal && (
-        <div>
-          <h2 className="text-xl font-bold mb-4">{selectedMeal.strMeal}</h2>
-          <button
-            onClick={() => setSelectedMeal(null)}
-            className="bg-red-500 text-white px-4 py-2 rounded mb-4"
-          >
+        <div className="meal-details-container">
+          <h2 className="meal-details-title">{selectedMeal.strMeal}</h2>
+          <button onClick={() => setSelectedMeal(null)} className="back-button">
             Back to Meals
           </button>
-          <img src={selectedMeal.strMealThumb} alt={selectedMeal.strMeal} className="w-full h-64 object-cover mb-4" />
-          <h3 className="text-lg font-semibold mb-2">Ingredients:</h3>
-          <ul className="list-disc ml-8">
-            {Object.keys(selectedMeal)
-              .filter((key) => key.startsWith('strIngredient') && selectedMeal[key])
-              .map((key) => (
-                <li key={key}>
-                  {selectedMeal[key]} - {selectedMeal[`strMeasure${key.replace('strIngredient', '')}`] || ''}
-                </li>
-              ))}
-          </ul>
-          <h3 className="text-lg font-semibold mt-4 mb-2">Instructions:</h3>
-          <p>{selectedMeal.strInstructions}</p>
+          <div className="meal-details-card">
+            <div className="meal-details-top">
+              {/* Meal Image */}
+              <img
+                src={selectedMeal.strMealThumb}
+                alt={selectedMeal.strMeal}
+                className="meal-details-image"
+              />
+              {/* Ingredients Section */}
+              <div className="ingredients">
+                <h4 className="ingredients-title">Ingredients:</h4>
+                <ul className="ingredients-list">
+                  {Object.keys(selectedMeal)
+                    .filter((key) => key.startsWith('strIngredient') && selectedMeal[key])
+                    .map((key) => (
+                      <li key={key}>
+                        {selectedMeal[key]} - {selectedMeal[`strMeasure${key.replace('strIngredient', '')}`] || ''}
+                      </li>
+                    ))}
+                </ul>
+              </div>
+            </div>
+            {/* Instructions Section */}
+            <div className="instructions">
+              <h4 className="instructions-title">Instructions:</h4>
+              <p className="instructions-text">{selectedMeal.strInstructions}</p>
+            </div>
+          </div>
         </div>
       )}
     </div>
