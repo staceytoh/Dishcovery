@@ -1,24 +1,22 @@
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import SurpriseMe from './pages/SurpriseMe';
 import FlavorTrip from './pages/FlavorTrip';
-import MealDetails from './pages/MealDetails';
+import Navbar from './components/Navbar'; // Import the Navbar
 
-function App() {
+const App = () => {
   return (
     <Router>
+      {/* Navbar outside the Routes */}
       <Navbar />
-      <div className="p-4">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/surprise-me" element={<SurpriseMe />} />
-          <Route path="/flavor-trip" element={<FlavorTrip />} />
-          <Route path="/meal/:id" element={<MealDetails />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/surprise-me" element={<SurpriseMe />} />
+        <Route path="/flavor-trip" element={<FlavorTrip />} />
+      </Routes>
     </Router>
   );
-}
+};
 
 export default App;
