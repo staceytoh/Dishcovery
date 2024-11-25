@@ -9,12 +9,20 @@ const Home = () => {
 
   // Fetch meals based on the search query
   const handleSearch = async () => {
+    if (!query.trim()) return; // Prevent searching with an empty query
     try {
       const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/search?q=${query}`);
       setMeals(response.data);
       setSelectedMeal(null); // Clear previously selected meal
     } catch (error) {
       console.error('Error searching for meals:', error);
+    }
+  };
+
+  // Detect "Enter" key and trigger search
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      handleSearch();
     }
   };
 
@@ -30,11 +38,9 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      {/* Main Content */}
       {!selectedMeal && (
         <>
           <main className="main-content">
-            {/* Text Section */}
             <div className="text-section">
               <h2>Search for delicious recipes, discover cuisines from different countries, or let us surprise you with a random dish!</h2>
               <p>Hungry? Give me an ingredient and I'll cook up a recipe for you!</p>
@@ -43,6 +49,7 @@ const Home = () => {
                   type="text"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
+                  onKeyDown={handleKeyDown} // Add event listener for Enter key
                   placeholder="Search meals..."
                   className="search-bar"
                 />
@@ -52,13 +59,11 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Image Section */}
             <div className="image-section">
               <img src="/burger.png" alt="Hamburger" />
             </div>
           </main>
 
-          {/* Search Results */}
           <div className="results">
             {meals.length > 0 && (
               <div className="meals-grid">
@@ -66,7 +71,7 @@ const Home = () => {
                   <div
                     key={meal.idMeal}
                     className="meal-card"
-                    onClick={() => fetchMealDetails(meal.idMeal)} // Make the card clickable
+                    onClick={() => fetchMealDetails(meal.idMeal)}
                   >
                     <h3 className="meal-title">{meal.strMeal}</h3>
                     <img
@@ -85,7 +90,6 @@ const Home = () => {
         </>
       )}
 
-      {/* Meal Details */}
       {selectedMeal && (
         <div className="meal-details-container">
           <h2 className="meal-details-title">{selectedMeal.strMeal}</h2>
@@ -94,13 +98,11 @@ const Home = () => {
           </button>
           <div className="meal-details-card">
             <div className="meal-details-top">
-              {/* Meal Image */}
               <img
                 src={selectedMeal.strMealThumb}
                 alt={selectedMeal.strMeal}
                 className="meal-details-image"
               />
-              {/* Ingredients Section */}
               <div className="ingredients">
                 <h4 className="ingredients-title">Ingredients:</h4>
                 <ul className="ingredients-list">
@@ -114,7 +116,6 @@ const Home = () => {
                 </ul>
               </div>
             </div>
-            {/* Instructions Section */}
             <div className="instructions">
               <h4 className="instructions-title">Instructions:</h4>
               <p className="instructions-text">{selectedMeal.strInstructions}</p>
