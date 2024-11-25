@@ -49,15 +49,16 @@ body {
 
 /* Main Content */
 .main-content {
-  display: flex; /* Use flexbox for side-by-side layout */
+  display: flex; /* Side-by-side layout for text and image */
   align-items: center; /* Center content vertically */
-  justify-content: space-between; /* Push items to opposite sides */
+  justify-content: center; /* Center content horizontally */
+  gap: 40px; /* Add space between text and image */
   margin-top: 40px;
 }
 
 .text-section {
-  flex: 1; /* Take up equal space with the image section */
-  max-width: 600px;
+  max-width: 600px; /* Limit text section width for readability */
+  text-align: center; /* Center-align the text */
 }
 
 .text-section h2 {
@@ -72,13 +73,14 @@ body {
 }
 
 .search-section {
+  display: flex; /* Align input and button inline */
+  justify-content: center; /* Center-align search bar and button */
   margin-top: 20px;
 }
 
 .search-bar {
   padding: 10px;
-  width: 100%;
-  max-width: 300px;
+  width: 300px;
   border: 1px solid #ddd;
   border-radius: 5px;
 }
@@ -99,25 +101,34 @@ button:hover {
 
 /* Image Section */
 .image-section {
-  flex: 1; /* Take up equal space with the text section */
+  max-width: 300px;
   text-align: center;
 }
 
 .image-section img {
-  max-width: 300px;
+  max-width: 100%;
   height: auto;
+  border-radius: 5px;
 }
 
 /* Results Section */
 .results {
-  margin-top: 20px;
+  margin-top: 40px; 
+  text-align: center; 
+  display: flex;
+  justify-content: center; 
+  flex-wrap: wrap; 
 }
 
-.meal-grid {
+.meals-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
   gap: 20px;
+  max-width: 1200px;
+  width: 100%;
+  justify-content: center; 
 }
+
 
 .meal-card {
   border: 1px solid #ddd;
@@ -140,9 +151,79 @@ button:hover {
 
 .meal-card a {
   color: #4ac178;
-  
 }
 
 .meal-card a:hover {
   text-decoration: none;
+}
+
+/* Meal Details */
+.meal-details-container {
+  margin-top: 20px;
+}
+
+.meal-details-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.back-button {
+  display: block;
+  margin: 0 auto 20px auto;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}
+
+.meal-details-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.meal-details-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 800px;
+  width: 100%;
+}
+
+.meal-details-image {
+  max-width: 300px;
+  border-radius: 5px;
+}
+
+.ingredients {
+  flex: 1;
+}
+
+.ingredients-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.ingredients-list {
+  list-style: none;
+  padding: 0;
+}
+
+.instructions-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.instructions-text {
+  text-align: left;
+  font-size: 1rem;
 }

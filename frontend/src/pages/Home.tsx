@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './Home.css'; // Ensure the CSS file is linked correctly
+import './Home.css'; 
 
 const Home = () => {
   const [query, setQuery] = useState('');
@@ -34,6 +34,7 @@ const Home = () => {
       {!selectedMeal && (
         <>
           <main className="main-content">
+            {/* Text Section */}
             <div className="text-section">
               <h2>Search for delicious recipes, discover cuisines from different countries, or let us surprise you with a random dish!</h2>
               <p>Hungry? Give me an ingredient and I'll cook up a recipe for you!</p>
@@ -50,13 +51,15 @@ const Home = () => {
                 </button>
               </div>
             </div>
+
+            {/* Image Section */}
             <div className="image-section">
               <img src="/burger.png" alt="Hamburger" />
             </div>
           </main>
 
           {/* Search Results */}
-          <div className="results mt-4">
+          <div className="results">
             {meals.length > 0 && (
               <div className="meals-grid">
                 {meals.map((meal: any) => (
