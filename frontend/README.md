@@ -1,50 +1,47 @@
-# React + TypeScript + Vite
+# **Dishcovery**
+Discover recipes from around the world! Search for meals, explore cuisines by country, or let us surprise you with a random dish.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## **Table of Contents**
+- [Project Description](#project-description)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## **Project Description**
+**Dishcovery** is a full-stack web application that allows users to:
+- Search for recipes by keyword.
+- Explore meals from different countries.
+- Get a randomly generated meal to spark culinary creativity.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+This project demonstrates the use of a Node.js backend with Express.js to build a REST API and a React.js frontend for an interactive user interface. Data is fetched from a database to ensure dynamic content delivery.
 
-- Configure the top-level `parserOptions` property like this:
+---
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## **Features**
+1. **Search Recipes**: Enter a keyword to search for meals and view their ingredients and instructions.
+2. **Flavor Trip**: Explore cuisines from different countries by clicking on flags. View a list of meals and detailed recipes for each.
+3. **Surprise Me**: Get a random meal recommendation.
+4. **Responsive Design**: Fully responsive for desktop.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+---
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## **Technologies Used**
+### **Frontend**:
+- React.js with TypeScript
+- TailwindCSS / Custom CSS for styling
+- Axios for API calls
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+### **Backend**:
+- Node.js with Express.js
+- MongoDB for storing recipe data
+- Dotenv for environment variable management
+
+### **Other Tools**:
+- Git & GitHub for version control
+- React Router for navigation
+- FontAwesome for icons
+
+---
