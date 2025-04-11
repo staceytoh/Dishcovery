@@ -1,48 +1,121 @@
-# **Dishcovery**
-Discover recipes from around the world! Search for meals, explore cuisines by country, or let us surprise you with a random dish.
+# 🍽️ Dishcovery – Discover Dishes From Around the World
+
+**Dishcovery** is a full-stack recipe discovery platform that brings global cuisine to your fingertips. Search for meals by keyword, explore dishes from different countries, or get a surprise recommendation to spark your next culinary adventure.
+
+Built with a modern stack using **React**, **Node.js**, and **Express**, this project demonstrates a clean separation between backend APIs and frontend views, with a responsive user experience and dynamic data fetching.
 
 ---
 
-## **Table of Contents**
-- [Project Description](#project-description)
-- [Features](#features)
-- [Technologies Used](#technologies-used)
+### 🌍 Live Demo
+
+> 🚧 **Live demo coming soon...**  
+> Stay tuned for deployment via Vercel + Render.
 
 ---
 
-## **Project Description**
-**Dishcovery** is a full-stack web application that allows users to:
-- Search for recipes by keyword.
-- Explore meals from different countries.
-- Get a randomly generated meal to spark culinary creativity.
+### 🧠 Core Features
 
-This project demonstrates the use of a Node.js backend with Express.js to build a REST API and a React.js frontend for an interactive user interface. Data is fetched from a database to ensure dynamic content delivery.
+- 🔍 **Search Recipes by Keyword**  
+  Instantly find meals from a large dataset via an intuitive search bar.
+
+- 🌐 **Explore by Country**  
+  Browse authentic recipes by country or region.
+
+- 🎲 **Random Meal Generator**  
+  One click = one surprise dish — great for foodies looking to try something new.
+
+- 📄 **Detailed Meal Views**  
+  Get ingredients, instructions, and photos in a clean UI layout.
+
+- 🧭 **Client–Server Architecture**  
+  Fully separated frontend and backend communicating via RESTful APIs.
+
+---
+
+### 🧰 Tech Stack
+
+#### Frontend (`/frontend`)
+- **React** with Hooks
+- **React Router DOM** for page navigation
+- **Fetch API** for backend interaction
+- Responsive design with CSS
+
+#### Backend (`/backend`)
+- **Node.js** with **Express.js**
+- **REST API** architecture
+- **MongoDB / JSON / External API** (depending on implementation)
+- Modular routing and error handling
 
 ---
 
-## **Features**
-1. **Search Recipes**: Enter a keyword to search for meals and view their ingredients and instructions.
-2. **Flavor Trip**: Explore cuisines from different countries by clicking on flags. View a list of meals and detailed recipes for each.
-3. **Surprise Me**: Get a random meal recommendation.
-4. **Responsive Design**: Fully responsive for desktop.
+### 📁 Project Structure
+
+```
+dishcovery/
+├── frontend/            # React frontend
+│   ├── src/
+│   └── public/
+├── backend/             # Express backend
+│   ├── routes/
+│   ├── controllers/
+│   └── server.js
+├── README.md
+├── package-lock.json
+└── .gitignore
+```
 
 ---
 
-## **Technologies Used**
-### **Frontend**:
-- React.js with TypeScript
-- TailwindCSS / Custom CSS for styling
-- Axios for API calls
+### 🚀 Getting Started
 
-### **Backend**:
-- Node.js with Express.js
-- MongoDB for storing recipe data
-- Dotenv for environment variable management
+#### 1. Clone the Repository
+```bash
+git clone https://github.com/your-username/dishcovery.git
+cd dishcovery
+```
 
-### **Other Tools**:
-- Git & GitHub for version control
-- React Router for navigation
-- FontAwesome for icons
+#### 2. Start Backend Server
+```bash
+cd backend
+npm install
+npm start
+```
+
+#### 3. Start Frontend React App
+In a new terminal:
+```bash
+cd frontend
+npm install
+npm start
+```
+
+#### 4. Open the App
+Navigate to:  
+[http://localhost:3000](http://localhost:3000)
 
 ---
-# Dishcovery
+
+### 📈 Future Enhancements
+
+- 🍽️ Save favorite meals / create a profile  
+- 🧠 Meal suggestion AI based on ingredients  
+- 📦 Switch to persistent database (MongoDB, PostgreSQL)  
+- 🔐 Authentication and user sessions  
+- 🌐 Deploy full-stack app with CI/CD pipeline
+
+---
+
+### 👩‍💻 Developed By
+
+**Stacey Toh**  and **Gregory Adiprawira**
+
+---
+
+### 📜 License
+
+MIT License — free to use, share, and improve!
+
+---
+
+Hungry for code *and* cuisine? This one’s for you 🍜
+
